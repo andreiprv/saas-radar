@@ -15,11 +15,17 @@ Options:
 """
 
 import argparse
+import io
 import json
 import os
 import sys
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
+
+# Force UTF-8 on Windows to handle Unicode from Reddit/X content
+if sys.platform == "win32":
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
 
 # Add lib to path
 SCRIPT_DIR = Path(__file__).parent.resolve()
@@ -183,7 +189,7 @@ def main():
         print("Usage: python3 saas_radar.py <topic> [options]", file=sys.stderr)
         sys.exit(1)
 
-    # ── Phase 1: Config & Setup ──
+    # -- Phase 1: Config & Setup --
 
     config = env.get_config()
     available = env.get_available_sources(config)
@@ -230,7 +236,7 @@ def main():
     else:
         mode = sources
 
-    # ── Phase 2: Subreddit Growth Scan ──
+    # -- Phase 2: Subreddit Growth Scan --
 
     progress.start_growth_scan()
     growth_signals = subreddit_growth.scan_growth(
@@ -240,7 +246,7 @@ def main():
     progress.end_growth_scan(len(growth_signals))
     growth_map = {g.subreddit: g.acceleration for g in growth_signals}
 
-    # ── Phase 3: Parallel Search (Reddit + X) ──
+    # -- Phase 3: Parallel Search (Reddit + X) --
 
     run_reddit = sources in ("both", "reddit")
     run_x = sources in ("both", "x")
@@ -291,7 +297,7 @@ def main():
                 progress.show_error(f"X: {e}")
             progress.end_x(len(x_items))
 
-    # ── Phase 4: Reddit Enrichment ──
+    # -- Phase 4: Reddit Enrichment --
 
     if reddit_items:
         progress.start_reddit_enrich(1, len(reddit_items))
@@ -313,7 +319,7 @@ def main():
 
         progress.end_reddit_enrich()
 
-    # ── Phase 5: Processing ──
+    # -- Phase 5: Processing --
 
     progress.start_processing()
 
@@ -344,7 +350,7 @@ def main():
 
     progress.end_processing()
 
-    # ── Phase 6: Output ──
+    # -- Phase 6: Output --
 
     report = schema.create_saas_report(
         args.topic,

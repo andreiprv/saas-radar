@@ -22,7 +22,7 @@ class Colors:
     RESET = '\033[0m'
 
 
-MINI_BANNER = f"""{Colors.GREEN}{Colors.BOLD}/saasradar{Colors.RESET} {Colors.DIM}· scanning for SaaS ideas...{Colors.RESET}"""
+MINI_BANNER = f"""{Colors.GREEN}{Colors.BOLD}/saasradar{Colors.RESET} {Colors.DIM}- scanning for SaaS ideas...{Colors.RESET}"""
 
 # Fun status messages for each phase
 GROWTH_MESSAGES = [
@@ -66,7 +66,7 @@ PROCESSING_MESSAGES = [
 ]
 
 # Spinner frames
-SPINNER_FRAMES = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏']
+SPINNER_FRAMES = ['|', '/', '-', '\\']
 
 
 class Spinner:
@@ -97,14 +97,14 @@ class Spinner:
         else:
             # Not a TTY (Claude Code) - just print once
             if not self.shown_static:
-                sys.stderr.write(f"⏳ {self.message}\n")
+                sys.stderr.write(f">> {self.message}\n")
                 sys.stderr.flush()
                 self.shown_static = True
 
     def update(self, message: str):
         self.message = message
         if not IS_TTY and not self.shown_static:
-            sys.stderr.write(f"⏳ {message}\n")
+            sys.stderr.write(f">> {message}\n")
             sys.stderr.flush()
 
     def stop(self, final_message: str = ""):
@@ -114,7 +114,7 @@ class Spinner:
         if IS_TTY:
             sys.stderr.write("\r" + " " * 80 + "\r")
         if final_message:
-            sys.stderr.write(f"✓ {final_message}\n")
+            sys.stderr.write(f"[ok] {final_message}\n")
         sys.stderr.flush()
 
 
@@ -134,7 +134,7 @@ class ProgressDisplay:
             sys.stderr.write(MINI_BANNER + "\n")
             sys.stderr.write(f"{Colors.DIM}Topic: {Colors.RESET}{Colors.BOLD}{self.topic}{Colors.RESET}\n\n")
         else:
-            sys.stderr.write(f"/saasradar · scanning: {self.topic}\n")
+            sys.stderr.write(f"/saasradar - scanning: {self.topic}\n")
         sys.stderr.flush()
 
     def start_growth_scan(self):
@@ -197,32 +197,32 @@ class ProgressDisplay:
     def show_complete(self, item_count: int, growth_count: int):
         elapsed = time.time() - self.start_time
         if IS_TTY:
-            sys.stderr.write(f"\n{Colors.GREEN}{Colors.BOLD}✓ SaaS Radar complete{Colors.RESET} ")
+            sys.stderr.write(f"\n{Colors.GREEN}{Colors.BOLD}[ok] SaaS Radar complete{Colors.RESET} ")
             sys.stderr.write(f"{Colors.DIM}({elapsed:.1f}s){Colors.RESET}\n")
             sys.stderr.write(f"  {Colors.GREEN}Ideas:{Colors.RESET} {item_count}  ")
             sys.stderr.write(f"{Colors.GREEN}Subreddits:{Colors.RESET} {growth_count}\n\n")
         else:
-            sys.stderr.write(f"✓ SaaS Radar complete ({elapsed:.1f}s) - {item_count} ideas, {growth_count} subreddits\n")
+            sys.stderr.write(f"[ok] SaaS Radar complete ({elapsed:.1f}s) - {item_count} ideas, {growth_count} subreddits\n")
         sys.stderr.flush()
 
     def show_error(self, message: str):
-        sys.stderr.write(f"{Colors.RED}✗ Error:{Colors.RESET} {message}\n")
+        sys.stderr.write(f"{Colors.RED}[error] Error:{Colors.RESET} {message}\n")
         sys.stderr.flush()
 
     def show_promo(self, missing: str = "both"):
         """Show promotional message for missing API keys."""
         if missing == "both":
             msg = (
-                "\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                "\n==========================================================================\n"
                 "No API keys configured. Add keys to ~/.config/saas-radar/.env\n"
-                "  OPENAI_API_KEY → Reddit threads with real upvotes & comments\n"
-                "  XAI_API_KEY    → X posts with real likes & reposts\n"
-                "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                "  OPENAI_API_KEY -> Reddit threads with real upvotes & comments\n"
+                "  XAI_API_KEY    -> X posts with real likes & reposts\n"
+                "==========================================================================\n"
             )
         elif missing == "x":
-            msg = "\n💡 Tip: Add XAI_API_KEY to ~/.config/saas-radar/.env for X/Twitter data!\n"
+            msg = "\nTip: Tip: Add XAI_API_KEY to ~/.config/saas-radar/.env for X/Twitter data!\n"
         elif missing == "reddit":
-            msg = "\n💡 Tip: Add OPENAI_API_KEY to ~/.config/saas-radar/.env for Reddit data!\n"
+            msg = "\nTip: Tip: Add OPENAI_API_KEY to ~/.config/saas-radar/.env for Reddit data!\n"
         else:
             return
         sys.stderr.write(msg)
