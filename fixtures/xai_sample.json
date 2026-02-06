@@ -1,0 +1,22 @@
+{
+  "id": "resp_saas_mock_x",
+  "object": "response",
+  "created": 1706140800,
+  "model": "grok-4-1-fast",
+  "output": [
+    {
+      "type": "message",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "{\n  \"items\": [\n    {\n      \"text\": \"Someone please build a simple tool that monitors my SaaS's status page uptime AND sends me a Slack alert when competitors go down. I'd pay $29/mo for that.\",\n      \"url\": \"https://x.com/indiehacker1/status/9876543210\",\n      \"author_handle\": \"indiehacker1\",\n      \"date\": \"2026-01-19\",\n      \"signal_type\": \"wish\",\n      \"idea_summary\": \"Competitor uptime monitoring tool that watches status pages and alerts when competitors experience outages.\",\n      \"target_audience\": \"SaaS founders who want to capitalize on competitor downtime\",\n      \"engagement\": {\n        \"likes\": 482,\n        \"reposts\": 87,\n        \"replies\": 34,\n        \"quotes\": 12\n      },\n      \"why_relevant\": \"Strong wish signal with specific price point willingness\",\n      \"relevance\": 0.93\n    },\n    {\n      \"text\": \"Thread: I built a micro-SaaS that auto-generates changelog entries from Git commits. $2K MRR in 3 months. Here's what I learned...\",\n      \"url\": \"https://x.com/buildinpublic/status/9876543211\",\n      \"author_handle\": \"buildinpublic\",\n      \"date\": \"2026-01-14\",\n      \"signal_type\": \"building\",\n      \"idea_summary\": \"Automated changelog generation from Git commits for SaaS products.\",\n      \"target_audience\": \"Dev teams and SaaS companies that need public changelogs\",\n      \"engagement\": {\n        \"likes\": 1203,\n        \"reposts\": 245,\n        \"replies\": 89,\n        \"quotes\": 56\n      },\n      \"why_relevant\": \"Validated micro-SaaS with revenue proof\",\n      \"relevance\": 0.91\n    },\n    {\n      \"text\": \"The biggest gap in the no-code space: there's no good way to build approval workflows. Every tool stops at forms.\",\n      \"url\": \"https://x.com/nocodefounder/status/9876543212\",\n      \"author_handle\": \"nocodefounder\",\n      \"date\": \"2026-01-08\",\n      \"signal_type\": \"feature_gap\",\n      \"idea_summary\": \"No-code approval workflow builder that goes beyond simple forms to handle multi-step approval chains.\",\n      \"target_audience\": \"Non-technical ops teams in companies with 20-200 employees\",\n      \"engagement\": {\n        \"likes\": 328,\n        \"reposts\": 67,\n        \"replies\": 45,\n        \"quotes\": 8\n      },\n      \"why_relevant\": \"Feature gap in a large and growing market\",\n      \"relevance\": 0.86\n    },\n    {\n      \"text\": \"Every week I manually export data from 3 different tools, combine in Google Sheets, then send to stakeholders. There must be a better way.\",\n      \"url\": \"https://x.com/saasops/status/9876543213\",\n      \"author_handle\": \"saasops\",\n      \"date\": \"2026-01-25\",\n      \"signal_type\": \"workflow\",\n      \"idea_summary\": \"Cross-tool data aggregation and automated reporting service for ops teams.\",\n      \"target_audience\": \"Operations managers at startups juggling multiple SaaS tools\",\n      \"engagement\": {\n        \"likes\": 156,\n        \"reposts\": 23,\n        \"replies\": 18,\n        \"quotes\": 4\n      },\n      \"why_relevant\": \"Manual workflow with clear automation opportunity\",\n      \"relevance\": 0.79\n    }\n  ]\n}"
+        }
+      ]
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 200,
+    "completion_tokens": 600,
+    "total_tokens": 800
+  }
+}

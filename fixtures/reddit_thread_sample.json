@@ -1,0 +1,88 @@
+[
+  {
+    "kind": "Listing",
+    "data": {
+      "children": [
+        {
+          "kind": "t3",
+          "data": {
+            "title": "Why isn't there a simple tool to track SaaS churn by cohort?",
+            "score": 482,
+            "num_comments": 67,
+            "upvote_ratio": 0.93,
+            "created_utc": 1768435200,
+            "permalink": "/r/microsaas/comments/saas001/why_isnt_there_a_simple_tool_to_track_saas_churn/",
+            "selftext": "I've been looking for a simple cohort churn analytics tool and everything is either too expensive or way too complex..."
+          }
+        }
+      ]
+    }
+  },
+  {
+    "kind": "Listing",
+    "data": {
+      "children": [
+        {
+          "kind": "t1",
+          "data": {
+            "score": 234,
+            "created_utc": 1768438800,
+            "author": "saas_founder",
+            "body": "I built a spreadsheet for this but it breaks every month when I add new cohorts. Would definitely pay for a proper tool.",
+            "permalink": "/r/microsaas/comments/saas001/why_isnt_there_a_simple_tool_to_track_saas_churn/comment1/"
+          }
+        },
+        {
+          "kind": "t1",
+          "data": {
+            "score": 189,
+            "created_utc": 1768442400,
+            "author": "indie_dev",
+            "body": "ChartMogul is too expensive for early-stage. I need something that's $20/month max and just does cohort churn, nothing else.",
+            "permalink": "/r/microsaas/comments/saas001/why_isnt_there_a_simple_tool_to_track_saas_churn/comment2/"
+          }
+        },
+        {
+          "kind": "t1",
+          "data": {
+            "score": 145,
+            "created_utc": 1768446000,
+            "author": "startup_cto",
+            "body": "The problem with existing tools is they try to do everything - revenue analytics, churn, MRR, LTV. I just want ONE thing done well.",
+            "permalink": "/r/microsaas/comments/saas001/why_isnt_there_a_simple_tool_to_track_saas_churn/comment3/"
+          }
+        },
+        {
+          "kind": "t1",
+          "data": {
+            "score": 98,
+            "created_utc": 1768449600,
+            "author": "bootstrapper",
+            "body": "Stripe has the data but the dashboard is terrible for cohort analysis. Someone just needs to build a nice UI on top of the Stripe API.",
+            "permalink": "/r/microsaas/comments/saas001/why_isnt_there_a_simple_tool_to_track_saas_churn/comment4/"
+          }
+        },
+        {
+          "kind": "t1",
+          "data": {
+            "score": 76,
+            "created_utc": 1768453200,
+            "author": "revenue_nerd",
+            "body": "I've been tracking this manually in Notion. 3 hours a week. Would love to automate this.",
+            "permalink": "/r/microsaas/comments/saas001/why_isnt_there_a_simple_tool_to_track_saas_churn/comment5/"
+          }
+        },
+        {
+          "kind": "t1",
+          "data": {
+            "score": 52,
+            "created_utc": 1768456800,
+            "author": "saas_ops",
+            "body": "Baremetrics used to be good but they pivoted. The market is wide open for a focused churn tool.",
+            "permalink": "/r/microsaas/comments/saas001/why_isnt_there_a_simple_tool_to_track_saas_churn/comment6/"
+          }
+        }
+      ]
+    }
+  }
+]

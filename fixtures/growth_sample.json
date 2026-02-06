@@ -1,0 +1,102 @@
+[
+  {
+    "subreddit": "microsaas",
+    "subscribers": 12400,
+    "active_users": 340,
+    "vitality": 0.0274,
+    "acceleration": 3.1,
+    "engagement_accel": 2.4,
+    "recent_count": 62,
+    "older_count": 20
+  },
+  {
+    "subreddit": "automation",
+    "subscribers": 89000,
+    "active_users": 1200,
+    "vitality": 0.0135,
+    "acceleration": 2.8,
+    "engagement_accel": 1.9,
+    "recent_count": 78,
+    "older_count": 28
+  },
+  {
+    "subreddit": "SideProject",
+    "subscribers": 45000,
+    "active_users": 890,
+    "vitality": 0.0198,
+    "acceleration": 2.3,
+    "engagement_accel": 1.7,
+    "recent_count": 55,
+    "older_count": 24
+  },
+  {
+    "subreddit": "SaaS",
+    "subscribers": 34000,
+    "active_users": 560,
+    "vitality": 0.0165,
+    "acceleration": 2.1,
+    "engagement_accel": 1.5,
+    "recent_count": 48,
+    "older_count": 23
+  },
+  {
+    "subreddit": "indiehackers",
+    "subscribers": 67000,
+    "active_users": 780,
+    "vitality": 0.0116,
+    "acceleration": 1.8,
+    "engagement_accel": 1.6,
+    "recent_count": 45,
+    "older_count": 25
+  },
+  {
+    "subreddit": "nocode",
+    "subscribers": 52000,
+    "active_users": 650,
+    "vitality": 0.0125,
+    "acceleration": 1.6,
+    "engagement_accel": 1.3,
+    "recent_count": 40,
+    "older_count": 25
+  },
+  {
+    "subreddit": "startups",
+    "subscribers": 120000,
+    "active_users": 1800,
+    "vitality": 0.015,
+    "acceleration": 1.4,
+    "engagement_accel": 1.2,
+    "recent_count": 50,
+    "older_count": 36
+  },
+  {
+    "subreddit": "selfhosted",
+    "subscribers": 98000,
+    "active_users": 1400,
+    "vitality": 0.0143,
+    "acceleration": 1.3,
+    "engagement_accel": 1.1,
+    "recent_count": 42,
+    "older_count": 32
+  },
+  {
+    "subreddit": "Entrepreneur",
+    "subscribers": 150000,
+    "active_users": 2100,
+    "vitality": 0.014,
+    "acceleration": 1.1,
+    "engagement_accel": 1.0,
+    "recent_count": 38,
+    "older_count": 35
+  },
+  {
+    "subreddit": "smallbusiness",
+    "subscribers": 110000,
+    "active_users": 1600,
+    "vitality": 0.0145,
+    "acceleration": 1.0,
+    "engagement_accel": 0.9,
+    "recent_count": 35,
+    "older_count": 35
+  }
+]
