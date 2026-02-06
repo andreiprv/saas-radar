@@ -191,9 +191,19 @@ def main():
 
     # -- Phase 1: Config & Setup --
 
-    config = env.get_config()
-    available = env.get_available_sources(config)
-    missing_keys = env.get_missing_keys(config)
+    setup = env.load_setup_cache() if not args.mock and not args.debug else None
+
+    if setup:
+        # Fast path: reuse cached source availability + models
+        config = env.get_config()
+        available = setup["available"]
+        missing_keys = setup["missing_keys"]
+        selected_models = setup["models"]
+    else:
+        # Slow path: full env check + model discovery
+        config = env.get_config()
+        available = env.get_available_sources(config)
+        missing_keys = env.get_missing_keys(config)
 
     if args.mock:
         if args.sources == "auto":
@@ -223,8 +233,17 @@ def main():
             mock_openai_models,
             mock_xai_models,
         )
-    else:
+    elif not setup:
         selected_models = models.get_models(config)
+
+        # Cache for next run
+        env.save_setup_cache({
+            "available": available,
+            "missing_keys": missing_keys,
+            "models": selected_models,
+            "has_openai": bool(config.get("OPENAI_API_KEY")),
+            "has_xai": bool(config.get("XAI_API_KEY")),
+        })
 
     # Determine mode string
     if sources == "both":

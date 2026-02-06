@@ -1,11 +1,16 @@
 """Environment and API key management for saas-radar skill."""
 
+import json
 import os
+import time
 from pathlib import Path
 from typing import Optional, Dict, Any
 
 CONFIG_DIR = Path.home() / ".config" / "saas-radar"
 CONFIG_FILE = CONFIG_DIR / ".env"
+CACHE_DIR = Path.home() / ".cache" / "saas-radar"
+SETUP_CACHE_FILE = CACHE_DIR / "setup.json"
+SETUP_CACHE_TTL_HOURS = 24
 
 
 def load_env_file(path: Path) -> Dict[str, str]:
@@ -123,3 +128,55 @@ def validate_sources(requested: str, available: str) -> tuple[str, Optional[str]
         return 'x', None
 
     return requested, None
+
+
+def load_setup_cache() -> Optional[Dict[str, Any]]:
+    """Load cached setup snapshot if valid.
+
+    Returns the cached dict if:
+    - setup.json exists and is < 24 hours old
+    - .env has not been modified since the cache was written
+
+    Returns None otherwise, forcing a fresh config check.
+    """
+    if not SETUP_CACHE_FILE.exists():
+        return None
+
+    try:
+        cache_mtime = SETUP_CACHE_FILE.stat().st_mtime
+    except OSError:
+        return None
+
+    # Invalidate if .env is newer than cache
+    if CONFIG_FILE.exists():
+        try:
+            env_mtime = CONFIG_FILE.stat().st_mtime
+            if env_mtime > cache_mtime:
+                return None
+        except OSError:
+            pass
+
+    # Check TTL
+    age_hours = (time.time() - cache_mtime) / 3600
+    if age_hours >= SETUP_CACHE_TTL_HOURS:
+        return None
+
+    try:
+        with open(SETUP_CACHE_FILE, 'r') as f:
+            data = json.load(f)
+        # Validate expected keys
+        if all(k in data for k in ("available", "missing_keys", "models")):
+            return data
+        return None
+    except (json.JSONDecodeError, OSError):
+        return None
+
+
+def save_setup_cache(data: Dict[str, Any]) -> None:
+    """Write setup snapshot to cache. Silently fails on write errors."""
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    try:
+        with open(SETUP_CACHE_FILE, 'w') as f:
+            json.dump(data, f)
+    except OSError:
+        pass
