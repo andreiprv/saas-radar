@@ -84,58 +84,58 @@ Pay attention to:
 
 ### THEN: Present Results
 
+IMPORTANT: Do NOT wrap output in triple-backtick code blocks. Use markdown tables, bold, blockquotes, and bullet lists — Claude Code renders these properly.
+
 **Display in this sequence:**
 
-**1. Growing Communities:**
-```
-Fastest-growing SaaS communities:
-1. r/microsaas (3.1x acceleration, 12.4K subs, 340 active)
-2. r/automation (2.8x acceleration, 89K subs, 1.2K active)
-3. ...
-```
+**1. Growing Communities** — markdown table:
 
-**2. Top Ideas by Category:**
+| # | Subreddit | Growth | Subscribers | Active |
+|---|-----------|--------|-------------|--------|
+| 1 | r/microsaas | 3.1x | 12.4K | 340 |
+| 2 | r/automation | 2.8x | 89K | 1.2K |
 
-Group the ideas by signal type, starting with the strongest signals:
+**2. Top Ideas by Category** — one table per signal type, starting with the strongest:
 
-**WISHES (People want something that doesn't exist):**
-```
-1. [Score] "Quote from thread title"
-   Opportunity: [idea_summary]
-   Audience: [target_audience]
-   Evidence: [engagement stats, market signal, key comment insights]
-```
+**WISHES** (People want something that doesn't exist)
 
-**PROBLEMS (Pain points people are expressing):**
-```
-(same format)
-```
+| Score | Idea | Source | Evidence |
+|------:|------|--------|----------|
+| 80 | Cohort churn analytics for small SaaS | r/microsaas | 717pts, 223cmt, 3.1x growth |
+| 72 | Competitor pricing monitor | r/indiehackers | 2 clusters, 1.8x growth |
 
-**FEATURE GAPS, BUILDING, WORKFLOWS** (if present)
+Then below each table, show detail cards for the top 2-3 ideas as blockquotes:
 
-**3. Market Patterns:**
+> **"Quote from thread title"**
+> **Audience:** SaaS founders with 100-1K customers
+> **Key insight:** "I built a spreadsheet for this but it breaks every month"
+> [Source link](url)
+
+**PROBLEMS** (Pain points people are expressing) — same table + blockquote format
+
+**FEATURE GAPS, BUILDING, WORKFLOWS** — same format, only if present
+
+**3. Market Patterns** — bullet list (no code block):
+
 - What themes appear across multiple threads?
 - Which subreddits are generating the most ideas?
 - Any gaps between what people want and what's being built?
 
-**4. Stats:**
-```
----
-Research complete!
-├─ Growth scan: {n} subreddits analyzed
-├─ Reddit: {n} threads │ {sum} upvotes │ {sum} comments
-├─ X: {n} posts │ {sum} likes │ {sum} reposts
-├─ Ideas found: {n} │ Clusters: {n} market signals
-└─ Top signals from: r/{sub1}, r/{sub2} │ @{handle1}, @{handle2}
-```
+**4. Stats** — bullet list:
 
-**5. Offer to deep-dive:**
-```
+**Research complete!**
+- **Growth scan:** {n} subreddits analyzed
+- **Reddit:** {n} threads, {sum} upvotes, {sum} comments
+- **X:** {n} posts, {sum} likes, {sum} reposts
+- **Ideas found:** {n}, **Clusters:** {n} market signals
+- **Top signals from:** r/{sub1}, r/{sub2}, @{handle1}, @{handle2}
+
+**5. Offer to deep-dive** — plain markdown:
+
 Want me to:
 - Deep-dive into a specific idea? (I'll analyze the market, competition, and feasibility)
 - Generate a validation plan for any of these ideas?
 - Search for more ideas in a specific niche?
-```
 
 ---
 
